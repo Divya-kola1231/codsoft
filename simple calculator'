@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double num1, num2;
+    char operation;
+    char choice;
+    bool reset = false;
+    cout<<"simple caculator" <<endl;
+
+    do {
+        // Input the first number
+        cout << "Enter the first number: ";
+        cin >> num1;
+
+        // Input the operator
+        cout << "Enter the operation (+, -, *, /, %): ";
+        cin >> operation;
+
+        // Input the second number
+        cout << "Enter the second number: ";
+        cin >> num2;
+
+        // Perform the calculation based on the operator
+        switch (operation) {
+            case '+':
+                cout << "Result: " << num1 + num2 << endl;
+                break;
+            case '-':
+                cout << "Result: " << num1 - num2 << endl;
+                break;
+            case '*':
+                cout << "Result: " << num1 * num2 << endl;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    cout << "Result: " << num1 / num2 << endl;
+                } else {
+                    cout << "Error: Division by zero!" << endl;
+                }
+                break;
+            case '%':
+                if (static_cast<int>(num2) != 0) {
+                    cout << "Result: " << static_cast<int>(num1) % static_cast<int>(num2) << endl;
+                } else {
+                    cout << "Error: Division by zero!" << endl;
+                }
+                break;
+            default:
+                cout << "Error: Invalid operation!" << endl;
+                break;
+        }
+
+        // Ask if the user wants to perform another calculation or reset the calculator
+        cout << "Do you want to perform another calculation? (y/n) or reset the calculator? (r): ";
+        cin >> choice;
+
+        if (choice == 'r' || choice == 'R') {
+            reset = true;
+        } else {
+            reset = false;
+        }
+
+    } while (reset || (choice == 'y' || choice == 'Y'));
+
+    cout << "Goodbye!" << endl;
+
+    return 0;
+}
